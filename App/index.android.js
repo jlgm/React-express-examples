@@ -1,53 +1,43 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, { Component } from 'react'
+import { AppRegistry, View, Text, StyleSheet} from 'react-native'
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+class Counter extends Component {
+    state = {count: 0}
 
-export default class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+
+    componentDidMount() {
+        setInterval(() => {
+            this.setState({count: this.state.count + 1})
+        }, 500)
+    }
+
+    render() {
+        const {count} = this.state
+        const {color, size} = this.props
+
+        return (
+            <Text style = {{color, fontSize: size}}>
+             {count}
+            </Text>
+        )
+    }
+}
+class App extends Component {
+    render() {
+        return (
+            <View style={styles.container}>
+             <Counter color = {'lightblue'} size={16}/>
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+})
 
-AppRegistry.registerComponent('App', () => App);
+AppRegistry.registerComponent('App', () => App)
