@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { AppRegistry, View, Text, StyleSheet} from 'react-native'
 
 class Counter extends Component {
-    state = {count: 0}
 
+    state = {count: 0}
 
     componentDidMount() {
         setInterval(() => {
             this.setState({count: this.state.count + 1})
-        }, 500)
+        }, 1000)
     }
 
     render() {
@@ -22,11 +22,15 @@ class Counter extends Component {
         )
     }
 }
+
 class App extends Component {
     render() {
         return (
             <View style={styles.container}>
-             <Counter color = {'lightblue'} size={16}/>
+             <Counter color = {'blue'} size={70}/>
+             <Counter color = {'teal'} size={40}/>
+             <Counter color = {'lightblue'} size={25}/>
+             <Counter color = {'silver'} size={12}/>
             </View>
         )
     }
