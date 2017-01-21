@@ -16,7 +16,7 @@ class Counter extends Component {
         const {color, size} = this.props
 
         return (
-            <Text style = {{color, fontSize: size}}>
+            <Text style = {{color, fontSize: size, alignSelf: 'center'}}>
              {count}
             </Text>
         )
@@ -27,10 +27,9 @@ class App extends Component {
     render() {
         return (
             <View style={styles.container}>
-             <Counter color = {'blue'} size={70}/>
-             <Counter color = {'teal'} size={40}/>
-             <Counter color = {'lightblue'} size={25}/>
-             <Counter color = {'silver'} size={12}/>
+             <View style={styles.box}>
+              <Counter style={styles.display} color={"green"} size={55}/>
+             </View>
             </View>
         )
     }
@@ -39,9 +38,22 @@ class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
     },
+    box: {
+        flex: 2,
+        backgroundColor: 'skyblue',
+        borderWidth: 6,
+        borderColor: 'steelblue',
+        borderRadius: 10,
+    },
+    display: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+    }
 })
 
 AppRegistry.registerComponent('App', () => App)
